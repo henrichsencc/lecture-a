@@ -1761,28 +1761,41 @@ summary {
 <p>This notebook requires a number of packages:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyB0aWR5dmVyc2UgcGFja2FnZXNcbmxpYnJhcnkocmVhZHIpICAgICAgICMgcmVhZC93cml0ZSB0YWJ1bGFyIGRhdGFcblxuIyBzcGF0aWFsIHBhY2thZ2VzXG5saWJyYXJ5KG1hcHZpZXcpICAgICAjIHByZXZpZXcgc3BhdGlhbCBkYXRhXG5saWJyYXJ5KHNmKSAgICAgICAgICAjIHNwYXRpYWwgZGF0YSB0b29sc1xuXG4jIG90aGVyIHBhY2thZ2VzXG5saWJyYXJ5KGhlcmUpICAgICAgICAjIGZpbGUgcGF0aCBtYW5hZ2VtZW50XG5gYGBcbmBgYCJ9 -->
-<p><code>r</code>r # tidyverse packages library(readr) # read/write tabular data</p>
-</div>
-<div id="spatial-packages" class="section level1">
-<h1>spatial packages</h1>
-<p>library(mapview) # preview spatial data library(sf) # spatial data tools</p>
-</div>
-<div id="other-packages" class="section level1">
-<h1>other packages</h1>
-<p>library(here) # file path management</p>
-<pre><code></code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB0aWR5dmVyc2UgcGFja2FnZXNcbmxpYnJhcnkocmVhZHIpICAgICAgICMgcmVhZC93cml0ZSB0YWJ1bGFyIGRhdGFcblxuIyBzcGF0aWFsIHBhY2thZ2VzXG5saWJyYXJ5KG1hcHZpZXcpICAgICAjIHByZXZpZXcgc3BhdGlhbCBkYXRhXG5gYGAifQ== -->
+<pre class="r"><code># tidyverse packages
+library(readr)       # read/write tabular data
+
+# spatial packages
+library(mapview)     # preview spatial data</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUmVnaXN0ZXJlZCBTMyBtZXRob2Qgb3ZlcndyaXR0ZW4gYnkgJ2h0bWx3aWRnZXRzJzpcbiAgbWV0aG9kICAgICAgICAgICBmcm9tICAgICAgICAgXG4gIHByaW50Lmh0bWx3aWRnZXQgdG9vbHM6cnN0dWRpb1xuIn0= -->
+<pre><code>Registered S3 method overwritten by 'htmlwidgets':
+  method           from         
+  print.htmlwidget tools:rstudio</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShzZikgICAgICAgICAgIyBzcGF0aWFsIGRhdGEgdG9vbHNcbmBgYCJ9 -->
+<pre class="r"><code>library(sf)          # spatial data tools</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTGlua2luZyB0byBHRU9TIDMuNy4yLCBHREFMIDIuNC4yLCBQUk9KIDUuMi4wXG4ifQ== -->
+<pre><code>Linking to GEOS 3.7.2, GDAL 2.4.2, PROJ 5.2.0</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBvdGhlciBwYWNrYWdlc1xubGlicmFyeShoZXJlKSAgICAgICAgIyBmaWxlIHBhdGggbWFuYWdlbWVudFxuYGBgIn0= -->
+<pre class="r"><code># other packages
+library(here)        # file path management</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiaGVyZSgpIHN0YXJ0cyBhdCAvVXNlcnMvcHJlbmVyY2cvRGVza3RvcC9sZWN0dXJlLWFcbiJ9 -->
+<pre><code>here() starts at /Users/prenercg/Desktop/lecture-a</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+</div>
 <div id="load-data" class="section level2">
 <h2>Load Data</h2>
 <p>This notebook requires one set of data:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBjbGVhbiB3YXRlciBhY3QgbGFrZXNcbnNsdVBsYWNlcyA8LSByZWFkX2NzdihoZXJlKFxcZGF0YVxcLCBcXGV4YW1wbGUtZGF0YVxcLCBcXHNsdVBsYWNlcy5jc3ZcXCkpXG5gYGBcbmBgYCJ9 -->
-<p><code>r</code>r # clean water act lakes sluPlaces &lt;- read_csv(here(, -data, .csv))</p>
-<pre><code></code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2x1UGxhY2VzIDwtIHJlYWRfY3N2KGhlcmUoXCJkYXRhXCIsIFwiZXhhbXBsZS1kYXRhXCIsIFwic2x1UGxhY2VzLmNzdlwiKSlcbmBgYCJ9 -->
+<pre class="r"><code>sluPlaces &lt;- read_csv(here(&quot;data&quot;, &quot;example-data&quot;, &quot;sluPlaces.csv&quot;))</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiUGFyc2VkIHdpdGggY29sdW1uIHNwZWNpZmljYXRpb246XG5jb2xzKFxuICBpZCA9IFx1MDAxYlszMm1jb2xfZG91YmxlKClcdTAwMWJbMzltLFxuICBuYW1lID0gXHUwMDFiWzMxbWNvbF9jaGFyYWN0ZXIoKVx1MDAxYlszOW0sXG4gIGxuZyA9IFx1MDAxYlszMm1jb2xfZG91YmxlKClcdTAwMWJbMzltLFxuICBsYXQgPSBcdTAwMWJbMzJtY29sX2RvdWJsZSgpXHUwMDFiWzM5bVxuKVxuIn0= -->
 <pre><code>Parsed with column specification:
@@ -1801,6 +1814,10 @@ cols(
 <p>Make sure your <code>x</code> and <code>y</code> coordinate variables are numeric or double:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2x1UGxhY2VzMiA8LSBtdXRhdGUoc2x1UGxhY2VzLCBsbmcgPSBhcy5udW1lcmljKGxuZykpXG5zbHVQbGFjZXMyIDwtIG11dGF0ZShzbHVQbGFjZXMyLCBsYXQgPSBhcy5udW1lcmljKGxhdCkpXG5gYGAifQ== -->
+<pre class="r"><code>sluPlaces2 &lt;- mutate(sluPlaces, lng = as.numeric(lng))
+sluPlaces2 &lt;- mutate(sluPlaces2, lat = as.numeric(lat))</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>If they are not, use <code>mutate()</code> with <code>as.numeric()</code> to convert them.</p>
@@ -1810,33 +1827,97 @@ cols(
 <p>First, we want to convert these data to from a <code>tibble</code> to an <code>sf</code> object with <code>st_as_sf()</code>. We use the <code>lng</code> variable as our <code>x</code> variable and <code>lat</code> as our <code>y</code> variable, and use <code>4269</code> for our <code>crs</code> argument since these data are in decimal degrees:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2x1UGxhY2VzX3NmIDwtIHN0X2FzX3NmKHNsdVBsYWNlcywgY29vcmRzID0gYyhcImxuZ1wiLCBcImxhdFwiKSwgY3JzID0gNDI2OSlcbmBgYCJ9 -->
+<pre class="r"><code>sluPlaces_sf &lt;- st_as_sf(sluPlaces, coords = c(&quot;lng&quot;, &quot;lat&quot;), crs = 4269)</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Next, we want to confirm that this worked:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWFwdmlldzo6bWFwdmlldyhzbHVQbGFjZXNfc2YpXG5gYGAifQ== -->
+<pre class="r"><code>mapview::mapview(sluPlaces_sf)</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Excellent!</p>
 </div>
 <div id="transform-our-projection" class="section level2">
 <h2>Transform Our Projection</h2>
-<p>We’ve already used <code>st_transform()</code>, but now can do so with purpose. For example, to convert our data to State Plane (meters):</p>
+<p>We’ve already used <code>st_transform()</code>, but now can do so with purpose. For example, to convert our data to State Plane (feet):</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2x1UGxhY2VzX3NmIDwtIHN0X3RyYW5zZm9ybShzbHVQbGFjZXNfc2YsIGNycyA9IDEwMjY5NilcbmBgYCJ9 -->
+<pre class="r"><code>sluPlaces_sf &lt;- st_transform(sluPlaces_sf, crs = 102696)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>We’ll confirm that this is the right projection:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RfY3JzKHNsdVBsYWNlc19zZilcbmBgYCJ9 -->
+<pre class="r"><code>st_crs(sluPlaces_sf)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiQ29vcmRpbmF0ZSBSZWZlcmVuY2UgU3lzdGVtOlxuICBFUFNHOiAxMDI2OTYgXG4gIHByb2o0c3RyaW5nOiBcIitwcm9qPXRtZXJjICtsYXRfMD0zNS44MzMzMzMzMzMzMzMzNCArbG9uXzA9LTkwLjUgK2s9MC45OTk5MzMzMzMzMzMzMzMzICt4XzA9MjUwMDAwICt5XzA9MCArZGF0dW09TkFEODMgK3VuaXRzPXVzLWZ0ICtub19kZWZzXCJcbiJ9 -->
+<pre><code>Coordinate Reference System:
+  EPSG: 102696 
+  proj4string: &quot;+proj=tmerc +lat_0=35.83333333333334 +lon_0=-90.5 +k=0.9999333333333333 +x_0=250000 +y_0=0 +datum=NAD83 +units=us-ft +no_defs&quot;</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
 <div id="write-data" class="section level2">
 <h2>Write Data</h2>
-<p>Finallys, we’ll write our data:</p>
+<p>Finally, we’ll write our data:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Rfd3JpdGUoc2x1UGxhY2VzX3NmLCBoZXJlKFwiZGF0YVwiLCBcImV4YW1wbGUtZGF0YVwiLCBcImNsZWFuLWRhdGFcIiwgXCJzbHVQbGFjZXMuc2hwXCIpLFxuICAgICAgICAgZGVsZXRlX2RzbiA9IFRSVUUpXG5gYGAifQ== -->
+<pre class="r"><code>st_write(sluPlaces_sf, here(&quot;data&quot;, &quot;example-data&quot;, &quot;clean-data&quot;, &quot;sluPlaces.shp&quot;),
+         delete_dsn = TRUE)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRGVsZXRpbmcgc291cmNlIGAvVXNlcnMvcHJlbmVyY2cvRGVza3RvcC9sZWN0dXJlLWEvZGF0YS9leGFtcGxlLWRhdGEvY2xlYW4tZGF0YS9zbHVQbGFjZXMuc2hwJyB1c2luZyBkcml2ZXIgYEVTUkkgU2hhcGVmaWxlJ1xuV3JpdGluZyBsYXllciBgc2x1UGxhY2VzJyB0byBkYXRhIHNvdXJjZSBgL1VzZXJzL3ByZW5lcmNnL0Rlc2t0b3AvbGVjdHVyZS1hL2RhdGEvZXhhbXBsZS1kYXRhL2NsZWFuLWRhdGEvc2x1UGxhY2VzLnNocCcgdXNpbmcgZHJpdmVyIGBFU1JJIFNoYXBlZmlsZSdcbldyaXRpbmcgNiBmZWF0dXJlcyB3aXRoIDIgZmllbGRzIGFuZCBnZW9tZXRyeSB0eXBlIFBvaW50LlxuIn0= -->
+<pre><code>Deleting source `/Users/prenercg/Desktop/lecture-a/data/example-data/clean-data/sluPlaces.shp' using driver `ESRI Shapefile'
+Writing layer `sluPlaces' to data source `/Users/prenercg/Desktop/lecture-a/data/example-data/clean-data/sluPlaces.shp' using driver `ESRI Shapefile'
+Writing 6 features with 2 fields and geometry type Point.</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Rfd3JpdGUoc2x1UGxhY2VzX3NmLCBoZXJlKFwiZGF0YVwiLCBcImV4YW1wbGUtZGF0YVwiLCBcImNsZWFuLWRhdGFcIiwgXCJzbHVQYWNlcy5nZW9qc29uXCIpLFxuICAgICAgICAgZGVsZXRlX2RzbiA9IFRSVUUpXG5gYGAifQ== -->
+<pre class="r"><code>st_write(sluPlaces_sf, here(&quot;data&quot;, &quot;example-data&quot;, &quot;clean-data&quot;, &quot;sluPaces.geojson&quot;),
+         delete_dsn = TRUE)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRGVsZXRpbmcgc291cmNlIGAvVXNlcnMvcHJlbmVyY2cvRGVza3RvcC9sZWN0dXJlLWEvZGF0YS9leGFtcGxlLWRhdGEvY2xlYW4tZGF0YS9zbHVQYWNlcy5nZW9qc29uJyBmYWlsZWRcbldyaXRpbmcgbGF5ZXIgYHNsdVBhY2VzJyB0byBkYXRhIHNvdXJjZSBgL1VzZXJzL3ByZW5lcmNnL0Rlc2t0b3AvbGVjdHVyZS1hL2RhdGEvZXhhbXBsZS1kYXRhL2NsZWFuLWRhdGEvc2x1UGFjZXMuZ2VvanNvbicgdXNpbmcgZHJpdmVyIGBHZW9KU09OJ1xuV3JpdGluZyA2IGZlYXR1cmVzIHdpdGggMiBmaWVsZHMgYW5kIGdlb21ldHJ5IHR5cGUgUG9pbnQuXG4ifQ== -->
+<pre><code>Deleting source `/Users/prenercg/Desktop/lecture-a/data/example-data/clean-data/sluPaces.geojson' failed
+Writing layer `sluPaces' to data source `/Users/prenercg/Desktop/lecture-a/data/example-data/clean-data/sluPaces.geojson' using driver `GeoJSON'
+Writing 6 features with 2 fields and geometry type Point.</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
-</div>
+<!-- rnb-text-begin -->
+<p>If we wanted to read these back in:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2x1UGxhY2VzX3NmXzIgPC0gc3RfcmVhZChoZXJlKFwiZGF0YVwiLCBcImV4YW1wbGUtZGF0YVwiLCBcImNsZWFuLWRhdGFcIiwgXCJzbHVQYWNlcy5nZW9qc29uXCIpLFxuICAgICAgICAgICAgICAgICAgICAgICAgICBjcnMgPSAxMDI2OTYpXG5gYGAifQ== -->
+<pre class="r"><code>sluPlaces_sf_2 &lt;- st_read(here(&quot;data&quot;, &quot;example-data&quot;, &quot;clean-data&quot;, &quot;sluPaces.geojson&quot;),
+                          crs = 102696)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUmVhZGluZyBsYXllciBgc2x1UGFjZXMnIGZyb20gZGF0YSBzb3VyY2UgYC9Vc2Vycy9wcmVuZXJjZy9EZXNrdG9wL2xlY3R1cmUtYS9kYXRhL2V4YW1wbGUtZGF0YS9jbGVhbi1kYXRhL3NsdVBhY2VzLmdlb2pzb24nIHVzaW5nIGRyaXZlciBgR2VvSlNPTidcbiJ9 -->
+<pre><code>Reading layer `sluPaces' from data source `/Users/prenercg/Desktop/lecture-a/data/example-data/clean-data/sluPaces.geojson' using driver `GeoJSON'</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoic3RfY3JzPC0gOiByZXBsYWNpbmcgY3JzIGRvZXMgbm90IHJlcHJvamVjdCBkYXRhOyB1c2Ugc3RfdHJhbnNmb3JtIGZvciB0aGF0XG4ifQ== -->
+<pre><code>st_crs&lt;- : replacing crs does not reproject data; use st_transform for that</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiU2ltcGxlIGZlYXR1cmUgY29sbGVjdGlvbiB3aXRoIDYgZmVhdHVyZXMgYW5kIDIgZmllbGRzXG5nZW9tZXRyeSB0eXBlOiAgUE9JTlRcbmRpbWVuc2lvbjogICAgICBYWVxuYmJveDogICAgICAgICAgIHhtaW46IDg5NTI5OS45IHltaW46IDEwMjAxNTkgeG1heDogODk2NDg3LjcgeW1heDogMTAyMTA5M1xuZXBzZyAoU1JJRCk6ICAgIDEwMjY5NlxucHJvajRzdHJpbmc6ICAgICtwcm9qPXRtZXJjICtsYXRfMD0zNS44MzMzMzMzMzMzMzMzNCArbG9uXzA9LTkwLjUgK2s9MC45OTk5MzMzMzMzMzMzMzMzICt4XzA9MjUwMDAwICt5XzA9MCArZGF0dW09TkFEODMgK3VuaXRzPXVzLWZ0ICtub19kZWZzXG4ifQ== -->
+<pre><code>Simple feature collection with 6 features and 2 fields
+geometry type:  POINT
+dimension:      XY
+bbox:           xmin: 895299.9 ymin: 1020159 xmax: 896487.7 ymax: 1021093
+epsg (SRID):    102696
+proj4string:    +proj=tmerc +lat_0=35.83333333333334 +lon_0=-90.5 +k=0.9999333333333333 +x_0=250000 +y_0=0 +datum=NAD83 +units=us-ft +no_defs</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiTGVjdHVyZS1BIEV4YW1wbGVzIgphdXRob3I6ICJDaHJpc3RvcGhlciBQcmVuZXIsIFBoLkQuIgpkYXRlOiAnKGByIGZvcm1hdChTeXMudGltZSgpLCAiJUIgJWQsICVZIilgKScKb3V0cHV0OiAKICBnaXRodWJfZG9jdW1lbnQ6IGRlZmF1bHQKICBodG1sX25vdGVib29rOiBkZWZhdWx0IAotLS0KCiMjIEludHJvZHVjdGlvbgpUaGlzIG5vdGVib29rIHByb3ZpZGVzIGFkZGl0aW9uYWwgZXhhbXBsZXMgb2YgZGF0YSBjbGVhbmluZyBwbHVzIG5ldyBtYXRlcmlhbCBvbiB0YWJsZSBqb2lucyBhbmQgZXhwb3J0aW5nIGRhdGEuCgojIyBEZXBlbmRlbmNpZXMKVGhpcyBub3RlYm9vayByZXF1aXJlcyBhIG51bWJlciBvZiBwYWNrYWdlczoKCmBgYHtyIGxvYWQtcGFja2FnZXN9CiMgdGlkeXZlcnNlIHBhY2thZ2VzCmxpYnJhcnkocmVhZHIpICAgICAgICMgcmVhZC93cml0ZSB0YWJ1bGFyIGRhdGEKCiMgc3BhdGlhbCBwYWNrYWdlcwpsaWJyYXJ5KG1hcHZpZXcpICAgICAjIHByZXZpZXcgc3BhdGlhbCBkYXRhCmxpYnJhcnkoc2YpICAgICAgICAgICMgc3BhdGlhbCBkYXRhIHRvb2xzCgojIG90aGVyIHBhY2thZ2VzCmxpYnJhcnkoaGVyZSkgICAgICAgICMgZmlsZSBwYXRoIG1hbmFnZW1lbnQKYGBgCgojIyBMb2FkIERhdGEKVGhpcyBub3RlYm9vayByZXF1aXJlcyBvbmUgc2V0IG9mIGRhdGE6CgpgYGB7ciBsb2FkLWRhdGF9CnNsdVBsYWNlcyA8LSByZWFkX2NzdihoZXJlKCJkYXRhIiwgImV4YW1wbGUtZGF0YSIsICJzbHVQbGFjZXMuY3N2IikpCmBgYAoKIyMgRGF0YSBDbGVhbmluZyBOb3RlcwpNYWtlIHN1cmUgeW91ciBgeGAgYW5kIGB5YCBjb29yZGluYXRlIHZhcmlhYmxlcyBhcmUgbnVtZXJpYyBvciBkb3VibGU6CgpgYGB7ciBjbGFzc30KCmBgYAoKSWYgdGhleSBhcmUgbm90LCB1c2UgYG11dGF0ZSgpYCB3aXRoIGBhcy5udW1lcmljKClgIHRvIGNvbnZlcnQgdGhlbS4KCiMjIFByb2plY3QgRGF0YQpGaXJzdCwgd2Ugd2FudCB0byBjb252ZXJ0IHRoZXNlIGRhdGEgdG8gZnJvbSBhIGB0aWJibGVgIHRvIGFuIGBzZmAgb2JqZWN0IHdpdGggYHN0X2FzX3NmKClgLiBXZSB1c2UgdGhlIGBsbmdgIHZhcmlhYmxlIGFzIG91ciBgeGAgdmFyaWFibGUgYW5kIGBsYXRgIGFzIG91ciBgeWAgdmFyaWFibGUsIGFuZCB1c2UgYDQyNjlgIGZvciBvdXIgYGNyc2AgYXJndW1lbnQgc2luY2UgdGhlc2UgZGF0YSBhcmUgaW4gZGVjaW1hbCBkZWdyZWVzOgoKYGBge3IgcHJvamVjdH0KCmBgYAoKTmV4dCwgd2Ugd2FudCB0byBjb25maXJtIHRoYXQgdGhpcyB3b3JrZWQ6CgpgYGB7ciBwcmV2aWV3fQoKYGBgCgpFeGNlbGxlbnQhCgojIyBUcmFuc2Zvcm0gT3VyIFByb2plY3Rpb24KV2UndmUgYWxyZWFkeSB1c2VkIGBzdF90cmFuc2Zvcm0oKWAsIGJ1dCBub3cgY2FuIGRvIHNvIHdpdGggcHVycG9zZS4gRm9yIGV4YW1wbGUsIHRvIGNvbnZlcnQgb3VyIGRhdGEgdG8gU3RhdGUgUGxhbmUgKG1ldGVycyk6CgpgYGB7ciBjb252ZXJ0LXRvLXN0YXRlLXBsYW5lfQoKYGBgCgojIyBXcml0ZSBEYXRhCkZpbmFsbHlzLCB3ZSdsbCB3cml0ZSBvdXIgZGF0YToKCmBgYHtyIHdyaXRlLWRhdGF9CgpgYGAK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiTGVjdHVyZS1BIEV4YW1wbGVzIgphdXRob3I6ICJDaHJpc3RvcGhlciBQcmVuZXIsIFBoLkQuIgpkYXRlOiAnKGByIGZvcm1hdChTeXMudGltZSgpLCAiJUIgJWQsICVZIilgKScKb3V0cHV0OiAKICBnaXRodWJfZG9jdW1lbnQ6IGRlZmF1bHQKICBodG1sX25vdGVib29rOiBkZWZhdWx0IAotLS0KCiMjIEludHJvZHVjdGlvbgpUaGlzIG5vdGVib29rIHByb3ZpZGVzIGFkZGl0aW9uYWwgZXhhbXBsZXMgb2YgZGF0YSBjbGVhbmluZyBwbHVzIG5ldyBtYXRlcmlhbCBvbiB0YWJsZSBqb2lucyBhbmQgZXhwb3J0aW5nIGRhdGEuCgojIyBEZXBlbmRlbmNpZXMKVGhpcyBub3RlYm9vayByZXF1aXJlcyBhIG51bWJlciBvZiBwYWNrYWdlczoKCmBgYHtyIGxvYWQtcGFja2FnZXN9CiMgdGlkeXZlcnNlIHBhY2thZ2VzCmxpYnJhcnkocmVhZHIpICAgICAgICMgcmVhZC93cml0ZSB0YWJ1bGFyIGRhdGEKCiMgc3BhdGlhbCBwYWNrYWdlcwpsaWJyYXJ5KG1hcHZpZXcpICAgICAjIHByZXZpZXcgc3BhdGlhbCBkYXRhCmxpYnJhcnkoc2YpICAgICAgICAgICMgc3BhdGlhbCBkYXRhIHRvb2xzCgojIG90aGVyIHBhY2thZ2VzCmxpYnJhcnkoaGVyZSkgICAgICAgICMgZmlsZSBwYXRoIG1hbmFnZW1lbnQKYGBgCgojIyBMb2FkIERhdGEKVGhpcyBub3RlYm9vayByZXF1aXJlcyBvbmUgc2V0IG9mIGRhdGE6CgpgYGB7ciBsb2FkLWRhdGF9CnNsdVBsYWNlcyA8LSByZWFkX2NzdihoZXJlKCJkYXRhIiwgImV4YW1wbGUtZGF0YSIsICJzbHVQbGFjZXMuY3N2IikpCmBgYAoKIyMgRGF0YSBDbGVhbmluZyBOb3RlcwpNYWtlIHN1cmUgeW91ciBgeGAgYW5kIGB5YCBjb29yZGluYXRlIHZhcmlhYmxlcyBhcmUgbnVtZXJpYyBvciBkb3VibGU6CgpgYGB7ciBjbGFzc30Kc2x1UGxhY2VzMiA8LSBtdXRhdGUoc2x1UGxhY2VzLCBsbmcgPSBhcy5udW1lcmljKGxuZykpCnNsdVBsYWNlczIgPC0gbXV0YXRlKHNsdVBsYWNlczIsIGxhdCA9IGFzLm51bWVyaWMobGF0KSkKYGBgCgpJZiB0aGV5IGFyZSBub3QsIHVzZSBgbXV0YXRlKClgIHdpdGggYGFzLm51bWVyaWMoKWAgdG8gY29udmVydCB0aGVtLgoKIyMgUHJvamVjdCBEYXRhCkZpcnN0LCB3ZSB3YW50IHRvIGNvbnZlcnQgdGhlc2UgZGF0YSB0byBmcm9tIGEgYHRpYmJsZWAgdG8gYW4gYHNmYCBvYmplY3Qgd2l0aCBgc3RfYXNfc2YoKWAuIFdlIHVzZSB0aGUgYGxuZ2AgdmFyaWFibGUgYXMgb3VyIGB4YCB2YXJpYWJsZSBhbmQgYGxhdGAgYXMgb3VyIGB5YCB2YXJpYWJsZSwgYW5kIHVzZSBgNDI2OWAgZm9yIG91ciBgY3JzYCBhcmd1bWVudCBzaW5jZSB0aGVzZSBkYXRhIGFyZSBpbiBkZWNpbWFsIGRlZ3JlZXM6CgpgYGB7ciBwcm9qZWN0fQpzbHVQbGFjZXNfc2YgPC0gc3RfYXNfc2Yoc2x1UGxhY2VzLCBjb29yZHMgPSBjKCJsbmciLCAibGF0IiksIGNycyA9IDQyNjkpCmBgYAoKTmV4dCwgd2Ugd2FudCB0byBjb25maXJtIHRoYXQgdGhpcyB3b3JrZWQ6CgpgYGB7ciBwcmV2aWV3fQptYXB2aWV3OjptYXB2aWV3KHNsdVBsYWNlc19zZikKYGBgCgpFeGNlbGxlbnQhCgojIyBUcmFuc2Zvcm0gT3VyIFByb2plY3Rpb24KV2UndmUgYWxyZWFkeSB1c2VkIGBzdF90cmFuc2Zvcm0oKWAsIGJ1dCBub3cgY2FuIGRvIHNvIHdpdGggcHVycG9zZS4gRm9yIGV4YW1wbGUsIHRvIGNvbnZlcnQgb3VyIGRhdGEgdG8gU3RhdGUgUGxhbmUgKGZlZXQpOgoKYGBge3IgY29udmVydC10by1zdGF0ZS1wbGFuZX0Kc2x1UGxhY2VzX3NmIDwtIHN0X3RyYW5zZm9ybShzbHVQbGFjZXNfc2YsIGNycyA9IDEwMjY5NikKYGBgCgpXZSdsbCBjb25maXJtIHRoYXQgdGhpcyBpcyB0aGUgcmlnaHQgcHJvamVjdGlvbjoKCmBgYHtyfQpzdF9jcnMoc2x1UGxhY2VzX3NmKQpgYGAKCiMjIFdyaXRlIERhdGEKRmluYWxseSwgd2UnbGwgd3JpdGUgb3VyIGRhdGE6CgpgYGB7ciB3cml0ZS1kYXRhfQpzdF93cml0ZShzbHVQbGFjZXNfc2YsIGhlcmUoImRhdGEiLCAiZXhhbXBsZS1kYXRhIiwgImNsZWFuLWRhdGEiLCAic2x1UGxhY2VzLnNocCIpLAogICAgICAgICBkZWxldGVfZHNuID0gVFJVRSkKCnN0X3dyaXRlKHNsdVBsYWNlc19zZiwgaGVyZSgiZGF0YSIsICJleGFtcGxlLWRhdGEiLCAiY2xlYW4tZGF0YSIsICJzbHVQYWNlcy5nZW9qc29uIiksCiAgICAgICAgIGRlbGV0ZV9kc24gPSBUUlVFKQpgYGAKCklmIHdlIHdhbnRlZCB0byByZWFkIHRoZXNlIGJhY2sgaW46CgpgYGB7ciByZWFkLWJhY2staW59CnNsdVBsYWNlc19zZl8yIDwtIHN0X3JlYWQoaGVyZSgiZGF0YSIsICJleGFtcGxlLWRhdGEiLCAiY2xlYW4tZGF0YSIsICJzbHVQYWNlcy5nZW9qc29uIiksCiAgICAgICAgICAgICAgICAgICAgICAgICAgY3JzID0gMTAyNjk2KQpgYGAKCgoK</div>
 
 
 

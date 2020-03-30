@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "sluPaces",
+"features": [
+{ "type": "Feature", "properties": { "id": 1.0, "name": "Morrissey Hall" }, "geometry": { "type": "Point", "coordinates": [ 895299.91119715385139, 1021092.514092352823354 ] } },
+{ "type": "Feature", "properties": { "id": 2.0, "name": "Starbucks" }, "geometry": { "type": "Point", "coordinates": [ 895949.111663797986694, 1020516.063901128596626 ] } },
+{ "type": "Feature", "properties": { "id": 3.0, "name": "Simon Rec" }, "geometry": { "type": "Point", "coordinates": [ 895663.038762633572333, 1020269.053074629046023 ] } },
+{ "type": "Feature", "properties": { "id": 4.0, "name": "Pius Library" }, "geometry": { "type": "Point", "coordinates": [ 895909.727893651346676, 1020800.739031147328205 ] } },
+{ "type": "Feature", "properties": { "id": 5.0, "name": "BSC" }, "geometry": { "type": "Point", "coordinates": [ 896487.729245260357857, 1020158.544151194044389 ] } },
+{ "type": "Feature", "properties": { "id": 6.0, "name": "The Pond" }, "geometry": { "type": "Point", "coordinates": [ 895526.526887115789577, 1020856.447192474151962 ] } }
+]
+}

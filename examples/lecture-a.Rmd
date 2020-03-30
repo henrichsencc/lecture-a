@@ -36,7 +36,8 @@ sluPlaces <- read_csv(here("data", "example-data", "sluPlaces.csv"))
 Make sure your `x` and `y` coordinate variables are numeric or double:
 
 ```{r class}
-
+sluPlaces2 <- mutate(sluPlaces, lng = as.numeric(lng))
+sluPlaces2 <- mutate(sluPlaces2, lat = as.numeric(lat))
 ```
 
 If they are not, use `mutate()` with `as.numeric()` to convert them.
@@ -45,27 +46,47 @@ If they are not, use `mutate()` with `as.numeric()` to convert them.
 First, we want to convert these data to from a `tibble` to an `sf` object with `st_as_sf()`. We use the `lng` variable as our `x` variable and `lat` as our `y` variable, and use `4269` for our `crs` argument since these data are in decimal degrees:
 
 ```{r project}
-
+sluPlaces_sf <- st_as_sf(sluPlaces, coords = c("lng", "lat"), crs = 4269)
 ```
 
 Next, we want to confirm that this worked:
 
 ```{r preview}
-
+mapview::mapview(sluPlaces_sf)
 ```
 
 Excellent!
 
 ## Transform Our Projection
-We've already used `st_transform()`, but now can do so with purpose. For example, to convert our data to State Plane (meters):
+We've already used `st_transform()`, but now can do so with purpose. For example, to convert our data to State Plane (feet):
 
 ```{r convert-to-state-plane}
+sluPlaces_sf <- st_transform(sluPlaces_sf, crs = 102696)
+```
 
+We'll confirm that this is the right projection:
+
+```{r}
+st_crs(sluPlaces_sf)
 ```
 
 ## Write Data
-Finallys, we'll write our data:
+Finally, we'll write our data:
 
 ```{r write-data}
+st_write(sluPlaces_sf, here("data", "example-data", "clean-data", "sluPlaces.shp"),
+         delete_dsn = TRUE)
 
+st_write(sluPlaces_sf, here("data", "example-data", "clean-data", "sluPaces.geojson"),
+         delete_dsn = TRUE)
 ```
+
+If we wanted to read these back in:
+
+```{r read-back-in}
+sluPlaces_sf_2 <- st_read(here("data", "example-data", "clean-data", "sluPaces.geojson"),
+                          crs = 102696)
+```
+
+
+
