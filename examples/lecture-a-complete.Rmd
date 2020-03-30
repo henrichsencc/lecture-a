@@ -1,5 +1,5 @@
 ---
-title: "Lecture-10 Examples, Completed"
+title: "Lecture-A Examples, Completed"
 author: "Christopher Prener, Ph.D."
 date: '(`r format(Sys.time(), "%B %d, %Y")`)'
 output: 
@@ -70,19 +70,9 @@ Finallys, we'll write our data:
 st_write(sluPlaces_statePlane, here("data", "example-data", "clean-data", "sluPlaces.shp"), delete_dsn = TRUE)
 ```
 
-## Experiment with Issues
-This is for experimenting with different `crs` values and identifying problems:
-
-```{r experiment}
-
-```
-
-
-
 ```{r move-to-docs, include=FALSE}
 # you do need to include this in any notebook you create for this class
-fs::file_copy(here::here("examples", "lecture-10-complete.nb.html"), 
+fs::file_copy(here::here("examples", "lecture-a-complete.nb.html"), 
               here::here("docs", "index.nb.html"), 
               overwrite = TRUE)
 ```
-

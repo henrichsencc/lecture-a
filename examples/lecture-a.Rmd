@@ -1,5 +1,5 @@
 ---
-title: "Lecture-10 Examples"
+title: "Lecture-A Examples"
 author: "Christopher Prener, Ph.D."
 date: '(`r format(Sys.time(), "%B %d, %Y")`)'
 output: 
@@ -67,12 +67,5 @@ We've already used `st_transform()`, but now can do so with purpose. For example
 Finallys, we'll write our data:
 
 ```{r write-data}
-
-```
-
-## Experiment with Issues
-This is for experimenting with different `crs` values and identifying problems:
-
-```{r experiment}
 
 ```
