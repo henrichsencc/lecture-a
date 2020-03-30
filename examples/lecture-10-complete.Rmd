@@ -1,0 +1,88 @@
+---
+title: "Lecture-10 Examples, Completed"
+author: "Christopher Prener, Ph.D."
+date: '(`r format(Sys.time(), "%B %d, %Y")`)'
+output: 
+  github_document: default
+  html_notebook: default 
+---
+
+## Introduction
+This notebook provides additional examples of data cleaning plus new material on table joins and exporting data.
+
+## Dependencies
+This notebook requires a number of packages:
+
+```{r load-packages}
+# tidyverse packages
+library(readr)       # read/write tabular data
+
+# spatial packages
+library(mapview)     # preview spatial data
+library(sf)          # spatial data tools
+
+# other packages
+library(here)        # file path management
+```
+
+## Load Data
+This notebook requires one set of data:
+
+```{r load-data}
+sluPlaces <- read_csv(here("data", "example-data", "sluPlaces.csv"))
+```
+
+## Data Cleaning Notes
+Make sure your `x` and `y` coordinate variables are numeric or double:
+
+```{r class}
+str(sluPlaces)
+```
+
+If they are not, use `mutate()` with `as.numeric()` to convert them.
+
+## Project Data
+First, we want to convert these data to from a `tibble` to an `sf` object with `st_as_sf()`. We use the `lng` variable as our `x` variable and `lat` as our `y` variable, and use `4269` for our `crs` argument since these data are in decimal degrees:
+
+```{r project}
+sluPlaces_sf <- st_as_sf(sluPlaces, coords = c("lng", "lat"), crs = 4269)
+```
+
+Next, we want to confirm that this worked:
+
+```{r preview}
+mapview(sluPlaces_sf)
+```
+
+Excellent!
+
+## Transform Our Projection
+We've already used `st_transform()`, but now can do so with purpose. For example, to convert our data to State Plane (meters):
+
+```{r convert-to-state-plane}
+sluPlaces_statePlane <- st_transform(sluPlaces_sf, crs = 6512)
+```
+
+## Write Data
+Finallys, we'll write our data:
+
+```{r write-data}
+st_write(sluPlaces_statePlane, here("data", "example-data", "clean-data", "sluPlaces.shp"), delete_dsn = TRUE)
+```
+
+## Experiment with Issues
+This is for experimenting with different `crs` values and identifying problems:
+
+```{r experiment}
+
+```
+
+
+
+```{r move-to-docs, include=FALSE}
+# you do need to include this in any notebook you create for this class
+fs::file_copy(here::here("examples", "lecture-10-complete.nb.html"), 
+              here::here("docs", "index.nb.html"), 
+              overwrite = TRUE)
+```
+
