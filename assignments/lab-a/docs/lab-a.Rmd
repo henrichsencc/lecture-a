@@ -1,0 +1,179 @@
+---
+title: "Lab-A Replication"
+author: "Christopher Prener, Ph.D."
+date: '(`r format(Sys.time(), "%B %d, %Y")`)'
+output: 
+  github_document: default
+  html_notebook: default 
+---
+
+## Introduction
+This notebook replicates the results of Lab-A.
+
+## Dependencies
+This notebook requires the following packages:
+
+```{r load-packages}
+# tidyverse packages
+library(dplyr)    # data manipulation
+library(ggplot2)  # mapping
+library(readr)    # import tabular data
+
+# spatial packages
+library(mapview)  # interactive map preview
+library(tmap)     # mapping
+library(sf)       # methods for spatial data
+
+# other packages
+library(here)     # file path management
+```
+
+## Load Data
+This notebook requires three data sets:
+
+```{r load-data}
+# spatial 
+county_bnd <-st_read(here("data","US_BOUNDARY_Counties","US_BOUNDARY_Counties.shp"), stringsAsFactors = FALSE)
+
+# tabular
+capitals <- read_csv(here("data", "stateCapitals.csv"))
+health_ins <- read_csv(here("data","US_HEALTH_noIns.csv"))
+```
+
+## Part 1
+### Question 1
+#### A
+First, we'll project the state capitals data. THe data are in decimal degrees, so we'll use the geogrpahic coordinate system NAD 1983 to project them. The `crs` value for that projection is 4269
+
+```{r p1-q1-a}
+# project
+capitals <- st_as_sf(capitals, coords = c("longitude", "latitude"), crs = 4269)
+
+# check
+mapview(capitals)
+```
+
+#### B
+We have projected data! We'll go ahead and save these data, and then remove Alaska and Hawaii:
+
+```{r p1-q1-a-2}
+# save data
+st_write(capitals, here("data", "cleanData", "US_CAPITALS_State", "US_CAPITALS_State.shp"),
+         delete_dsn = TRUE)
+
+# subset
+capitals <- filter(capitals, name %in% c("Alaska", "Hawaii") == FALSE)
+```
+
+#### C
+Next, we need to combine our county data in `county_bnd` with the `health_ins` data. First, we want to join these data. `GEOID` appears to be a common variable among them, but it is character in one data.frame and numeric in the other. To fix this, we can `mutate` one class to match the other.
+```{r p1-q1-c}
+health_ins <- mutate(health_ins, GEOID = as.numeric(GEOID))
+```
+
+Now we can table join as usual.
+
+```{r p1-q1-c-2}
+cnty_health <- left_join(county_bnd, health_ins, by = "GEOID")
+```
+
+#### Part D
+We want to subset our data to remove the observations with missing data. Since we know that $-1$ denotes missing data, we'll `filter` for observations where `noIns` is $>=0$
+
+```{r p1-q1-d}
+cnty_health <- filter(cnty_health, noIns >= 0)
+```
+
+#### Part E
+Next, we'll repeat the same subsetting that we did with the capitals:
+
+```{r p1-q1-e}
+# subset
+cnty_health <- filter(cnty_health, state %in% c("Alaska", "Hawaii") == FALSE)
+```
+
+We could also use the `STATEFP` variable:
+
+```r
+cnty_health <- filter(cnty_health, STATEFP %in% c("02", "15") == FALSE)
+```
+
+Both approaches work equally well in this case.
+
+#### Part F
+Finally, we'll export our data:
+
+```{r p1-q1-f}
+st_write(cnty_health, here("data", "cleanData", "US_HEALTH_noIns", "US_HEALTH_noIns.shp"),
+         delete_dsn = TRUE)
+```
+
+## Part 2
+### Question 2
+Next, we'll apply the Lambert project coordinate system to both of our data objects:
+
+```{r p2-q2}
+### insurance data
+cnty_health <- st_transform(cnty_health, crs = 102004)
+
+### capitals
+capitals <- st_transform(capitals, crs = 102004)
+```
+
+Now our data are ready for mapping.
+
+### Questions 3-5, `ggplot2`
+First, we'll make our plot using `ggplot2`. I'll use the `lwd` argument to diminish the lines around each of the counties:
+
+```{r p2-q3-5-ggplot2}
+ggplot() +
+  geom_sf(data = cnty_health, mapping = aes(fill = noIns), lwd = .15) +
+  geom_sf(data = capitals) +
+  scale_fill_distiller(palette = "YlGn", trans = "reverse", name = "Percent") +
+  labs(
+    title = "Percent of Residents without Health Insurance",
+    subtitle = "By U.S. County",
+    caption = "Map by Christopher Prener, Ph.D.\nData via the CDC"
+  ) +
+  theme_void() -> map1
+
+map1
+```
+
+### Questions 3-5, `tmap`
+First, we'll make our plot using `ggplot2`. I'll use the `lwd` argument to diminish the lines around each of the counties:
+
+```{r p2-q3-5-tmap}
+tm_shape(cnty_health) +
+  tm_polygons(col = "noIns",
+              palette = "YlGn",
+              style = "jenks",
+              title = "Percent", 
+              lwd = .25) +
+  tm_shape(capitals) +
+    tm_symbols(
+      col = "#000000",
+      size = 0.25) +
+  tm_layout(
+    title = "Percent of\nResidents without\nHealth Insurance",
+    frame = FALSE,
+    legend.outside = TRUE,
+    legend.position = c("right", "bottom")
+  ) -> map2
+
+map2
+```
+
+### Question 6, `ggplot2`
+Next, we'll save our `ggplot2` map:
+
+```{r p2-q6-ggplot2}
+ggsave(here("results", "ggplot2_map.png"), map1, dpi = 500)
+```
+
+### Question 6, `tamp`
+Finally, we'll save our `tmap` map:
+
+```{r p2-q6-tmap}
+tmap_save(tm = map2, filename = here("results", "tmap_map.png"), dpi = 500)
+```
